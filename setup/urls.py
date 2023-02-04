@@ -19,6 +19,6 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     # importando as rotas do app galeria 
-    path('',include('galeria.urls'))
+    path('',include('galeria.urls'), name="index")
     
 ]

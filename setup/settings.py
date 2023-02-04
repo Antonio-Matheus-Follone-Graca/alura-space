@@ -130,7 +130,7 @@ STATIC_URL = 'static/'
 
 # indicando que os arquivos estaticos estão
 STATICFILES_DIRS = [ 
-    # BASE_DIR é a pasta principal. A pasta setup
+    # BASE_DIR é a pasta principal. A pasta de fora do setup 
     os.path.join(BASE_DIR,'setup/static')
 
 ]
