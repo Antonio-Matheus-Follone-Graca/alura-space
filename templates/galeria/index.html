@@ -27,10 +27,10 @@
         <main class="principal">
             <section class="menu-lateral">
                 <nav class="menu-lateral__navegacao">
-                    <a href="#"><img src="{% static '/assets/ícones/1x/Home - ativo.png' %}"> Home</a>
-                    <a href="#"><img src="{% static '/assets/ícones/1x/Mais vistas - inativo.png' %}"> Mais vistas</a>
-                    <a href="#"><img src="{% static '/assets/ícones/1x/Novas - inativo.png' %}"> Novas</a>
-                    <a href="#"><img src="{% static '/assets/ícones/1x/Surpreenda-me - inativo.png' %}"> Surpreenda-me</a>
+                    <a href="{% url 'imagem' %}"><img src="{% static '/assets/ícones/1x/Home - ativo.png' %}"> Home</a>
+                    <a href="{% url 'imagem' %}"><img src="{% static '/assets/ícones/1x/Mais vistas - inativo.png' %}"> Mais vistas</a>
+                    <a href="{% url 'imagem' %}"><img src="{% static '/assets/ícones/1x/Novas - inativo.png' %}"> Novas</a>
+                    <a href="{% url 'imagem' %}"><img src="{% static '/assets/ícones/1x/Surpreenda-me - inativo.png' %}"> Surpreenda-me</a>
                 </nav>
             </section>
             <section class="conteudo">
