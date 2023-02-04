@@ -61,8 +61,9 @@ ROOT_URLCONF = 'setup.urls'
 
 TEMPLATES = [
     {
+        
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -123,7 +124,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
+# arquivos staticos = arquivos de css, javascript e etc
+# fica na pasta do projeto 
 STATIC_URL = 'static/'
+
+# indicando que os arquivos estaticos estão
+STATICFILES_DIRS = [ 
+    # BASE_DIR é a pasta principal. A pasta setup
+    os.path.join(BASE_DIR,'setup/static')
+
+]
+
+# caminho do diretório static 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
