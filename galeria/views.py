@@ -1,25 +1,26 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 # Create your views here.
 
+# importando model 
+from galeria.models import Fotografia
 
 
 def index( request):
-    dados = {
-    1:{
-        'nome':'Nebulosa de Carina',
-        'legenda':'webbtelescope.org/ NASA / James Webb'
-    },
-    2:{ 
-        'nome':'Galáxia NGC 1879',
-        'legenda': 'nasa.org/ NASA / Hubble'
+    # fazendo uma consulta de todos os dados da tabela
+    fotografias = Fotografia.objects.all()
 
-    ,}
-}
-    return render(request,'galeria/index.html', {"cards": dados})
+    return render(request,'galeria/index.html', {"cards": fotografias})
 
 
-def imagem (request):
-    return render(request, 'galeria/imagem.html')
+def imagem (request, foto_id):
+    '''
+        id_imagem: parametro id da imagem da url /imagem/<int:id_imagem>  
+    '''
+    fotografia = get_object_or_404(Fotografia, pk=foto_id)
+    print(foto_id)
+    # passando nome da imagem via dicionario
+    print(fotografia)
+    return render(request, 'galeria/imagem.html', {"fotografia": fotografia})
 
 
