@@ -7,8 +7,8 @@ from galeria.models import Fotografia
 
 
 def index( request):
-    # fazendo uma consulta de todos os dados da tabela
-    fotografias = Fotografia.objects.all()
+    # fazendo uma consulta dos dados da tabela
+    fotografias = Fotografia.objects.filter(publicada = True)
 
     return render(request,'galeria/index.html', {"cards": fotografias})
 

@@ -6,10 +6,13 @@ from galeria.models import Fotografia
 
 # formatação da listagem de fotografias 
 class ListandoFotografias(admin.ModelAdmin):
-    list_display = ('id', 'nome', 'legenda')  # mostrando dados da tabela fotografia pelos campos id, nome e legenda
+    list_display = ('id', 'nome', 'legenda', 'publicada')  # mostrando dados da tabela fotografia pelos campos id, nome, legenda e publicada
     list_display_links = ('id', 'nome') # mostrando links para o registro nos campos id e nome
+    # a vírgula no final é obrigatória pois é uma tupla
     search_fields = ('nome',)  # pesquisar pelo campo nome, o virgula vazio é obrigatório  
- 
+    list_filter = ('categoria',) # filtro de registros por tipo de categoria
+    list_per_page = 10 
+    list_editable = ('publicada',) # campo que pode ser editado sem clicar no editar registro
  
 
 # adicionando a opção da tabela fotografia, o segundo parametro e a classe de formatação de de fotografia
