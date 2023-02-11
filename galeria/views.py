@@ -23,4 +23,7 @@ def imagem (request, foto_id):
     print(fotografia)
     return render(request, 'galeria/imagem.html', {"fotografia": fotografia})
 
+def buscar(request):
+    return render(request,'pagina.html')
+
 
