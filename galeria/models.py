@@ -24,4 +24,4 @@ class Fotografia(models.Model):
 
     # ao chamar o objeto da classe retorna o nome da fotografia
     def __str__(self):
-        return f"Fotografia [nome={self.nome}]"
+        return self.nome
