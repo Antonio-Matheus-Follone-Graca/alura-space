@@ -1,6 +1,7 @@
 from django.urls import path
 
 from galeria.views import *
+from galeria import views
 
 
 urlpatterns = [

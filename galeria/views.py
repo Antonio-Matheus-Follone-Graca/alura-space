@@ -24,6 +24,16 @@ def imagem (request, foto_id):
     return render(request, 'galeria/imagem.html', {"fotografia": fotografia})
 
 def buscar(request):
-    return render(request,'pagina.html')
+    if request.GET:
+        pesquisa = request.GET['buscar']
+        print(pesquisa)
+
+        contexto = {
+            'pesquisa': pesquisa
+        }
+        return render(request,'galeria/buscar.html', contexto)
+    
+    else:
+        return render(request,'galeria/index.html')
 
 
