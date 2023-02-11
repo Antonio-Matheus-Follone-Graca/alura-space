@@ -138,6 +138,16 @@ STATICFILES_DIRS = [
 # caminho do diretório static 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+#  Media 
+
+# informando aonde ficarão as imagens, ficaram na pasta media
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# url da pasta media
+MEDIA_URL = '/media/'
+
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
