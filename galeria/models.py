@@ -16,7 +16,8 @@ class Fotografia(models.Model):
     legenda = models.CharField(max_length=150, null=False, blank=False)
     categoria = models.CharField(max_length = 100, choices= opcoes_categoria, default='')
     descricao = models.TextField(null=False, blank=False)
-    foto = models.CharField(max_length=150, null=False, blank=False)
+    # manda a imagem para a pasta fotos com foto com ano, mes e dia
+    foto = models.ImageField(upload_to = 'fotos/%Y/%m/%d/', blank= True)
     publicada = models.BooleanField(default= False)
     data_fotografia = models.DateTimeField(default= datetime.now, blank = False)
 
