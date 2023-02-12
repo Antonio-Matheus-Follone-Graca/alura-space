@@ -24,16 +24,16 @@ def imagem (request, foto_id):
     return render(request, 'galeria/imagem.html', {"fotografia": fotografia})
 
 def buscar(request):
-    if request.GET:
-        pesquisa = request.GET['buscar']
-        print(pesquisa)
-
-        contexto = {
-            'pesquisa': pesquisa
-        }
-        return render(request,'galeria/buscar.html', contexto)
+    fotografias = Fotografia.objects.order_by("data_fotografia").filter(publicada = True)
+    # se existe o campo de name buscar na requisição, faz a consulta 
+    if 'buscar' in request.GET:
+        nome_a_buscar = request.GET['buscar']
+        # se existe nome_a_buscar, se tem um valor nele
+        if nome_a_buscar:
+        # faz a consulta pelo campo nome da model
+            fotografias = fotografias.filter(nome_icontains = nome_a_buscar)
+   
+            return render(request,'galeria/buscar.html',{"cards": fotografias})
     
-    else:
-        return render(request,'galeria/index.html')
-
+    
 
