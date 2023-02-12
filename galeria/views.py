@@ -28,10 +28,11 @@ def buscar(request):
     # se existe o campo de name buscar na requisição, faz a consulta 
     if 'buscar' in request.GET:
         nome_a_buscar = request.GET['buscar']
+        print(nome_a_buscar)
         # se existe nome_a_buscar, se tem um valor nele
         if nome_a_buscar:
         # faz a consulta pelo campo nome da model
-            fotografias = fotografias.filter(nome_icontains = nome_a_buscar)
+            fotografias = fotografias.filter(nome__icontains = nome_a_buscar)
    
             return render(request,'galeria/buscar.html',{"cards": fotografias})
     
