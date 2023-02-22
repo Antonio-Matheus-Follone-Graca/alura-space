@@ -10,7 +10,7 @@ class ListandoFotografias(admin.ModelAdmin):
     list_display_links = ('id', 'nome') # mostrando links para o registro nos campos id e nome
     # a vírgula no final é obrigatória pois é uma tupla
     search_fields = ('nome',)  # pesquisar pelo campo nome, o virgula vazio é obrigatório  
-    list_filter = ('categoria',) # filtro de registros por tipo de categoria
+    list_filter = ('categoria',"usuario") # filtro de registros por tipo de categoria e usuario
     list_per_page = 10 
     list_editable = ('publicada',) # campo que pode ser editado sem clicar no editar registro
  
