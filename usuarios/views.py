@@ -3,8 +3,12 @@ from django.shortcuts import render,redirect
 # importando classe de formulario
 from usuarios.forms import LoginForms
 from usuarios.forms import CadastroForms
+# model 
 from django.contrib.auth.models import  User
+# login e logout
 from django.contrib import auth
+# mensagens
+from django.contrib import messages
 # Create your views here.
 
 def login(request):
@@ -26,11 +30,13 @@ def login(request):
             if usuario is not None:
                 # logando
                 auth.login(request, usuario)
+                messages.success(request, f"{nome} logado com sucesso")
                 # redirecionando para index
                 return redirect('index')
             
-            # caso a variavel usuário seja nulo 
+            # caso a variavel usuário seja nulo( login incorreto) 
             else:
+                messages.error(request, 'Erro ao efetuar login ')
                 return redirect('login')
 
     
@@ -49,6 +55,7 @@ def cadastro(request):
         if form.is_valid():
             # se a senha 1 for diferente do senha 2
             if form['senha_1'].value() != form['senha_2'].value():
+                messages.error(request,' Senhas não são iguais')
                 return redirect('cadastro')
             
 
@@ -60,6 +67,7 @@ def cadastro(request):
 
             # validando o nome do usuário, se ele já existe
             if  User.objects.filter(username= nome).exists():
+                messages.error(request,' Usuário  já existente')
                 return redirect('cadastro')
 
             else:
@@ -71,6 +79,7 @@ def cadastro(request):
                     password= senha_1
                 )
                 usuario.save()
+                messages.success(request, ' Cadastro realizado com sucesso')
                 return redirect('login')
     
     contexto = {'form': form_cadastro}
@@ -80,7 +89,8 @@ def cadastro(request):
 def logout(request):
     # deslogando usuário e redirecionando 
     auth.logout(request)
-    return redirect('index')
+    messages.success(request, 'Logout efetuado com sucesso !')
+    return redirect('login')
 
 
 

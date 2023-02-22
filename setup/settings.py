@@ -17,6 +17,9 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+
+from django.contrib.messages import constants as messages
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -146,6 +149,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # url da pasta media
 MEDIA_URL = '/media/'
+
+# messages
+
+MESSAGE_TAGS = {
+    messages.SUCCESS: 'primary',
+    messages.ERROR:'danger',
+}
 
 
 
