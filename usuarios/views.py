@@ -30,7 +30,7 @@ def login(request):
             if usuario is not None:
                 # logando
                 auth.login(request, usuario)
-                messages.success(request, f"{nome} logado com sucesso")
+                messages.success(request," logado com sucesso")
                 # redirecionando para index
                 return redirect('index')
             
