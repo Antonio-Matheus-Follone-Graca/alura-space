@@ -67,7 +67,7 @@ def cadastro(request):
 
             # validando o nome do usuário, se ele já existe
             if  User.objects.filter(username= nome).exists():
-                messages.error(request,' Usuário  já existente')
+                messages.ERROR(request,' Usuário  já existente')
                 return redirect('cadastro')
 
             else:

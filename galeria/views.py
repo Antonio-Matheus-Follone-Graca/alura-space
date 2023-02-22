@@ -1,16 +1,24 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 # Create your views here.
 
 # importando model 
 from galeria.models import Fotografia
 
+from django.contrib import messages
+
 
 def index( request):
-    # fazendo uma consulta dos dados da tabela
-    fotografias = Fotografia.objects.order_by("data_fotografia").filter(publicada = True)
+    # se o usuário  não está logado
+    if not request.user.is_authenticated:
+        # redireciona para a página de login
+        messages.error(request,' Usuário não logado')
+        return redirect('login')
+    else:
+        # fazendo uma consulta dos dados da tabela
+        fotografias = Fotografia.objects.order_by("data_fotografia").filter(publicada = True)
 
-    return render(request,'galeria/index.html', {"cards": fotografias})
+        return render(request,'galeria/index.html', {"cards": fotografias})
 
 
 def imagem (request, foto_id):
@@ -24,6 +32,11 @@ def imagem (request, foto_id):
     return render(request, 'galeria/imagem.html', {"fotografia": fotografia})
 
 def buscar(request):
+    if not request.user.is_authenticated:
+        # redireciona para a página de login
+        messages.error(request,' Usuário  não logado')
+        return redirect('login')
+    
     fotografias = Fotografia.objects.order_by("data_fotografia").filter(publicada = True)
     # se existe o campo de name buscar na requisição, faz a consulta 
     if 'buscar' in request.GET:
