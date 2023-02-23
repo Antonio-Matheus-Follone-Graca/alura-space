@@ -69,7 +69,7 @@ class CadastroForms(forms.Form):
             }
         ),
     )
-    # validações dos campos
+
     def clean_nome_cadastro(self):
         nome = self.cleaned_data.get('nome_cadastro')
 
